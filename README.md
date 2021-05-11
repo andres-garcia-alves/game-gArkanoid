@@ -1,4 +1,4 @@
-# gArkanoid v1.1, 2010.02
+# gArkanoid v1.1 (2010.02)
 
 An 'Arkanoid' (NES) clon, developed in C# & GDI+. 
 
