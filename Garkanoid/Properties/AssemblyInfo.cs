@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Garkanoid")]
-[assembly: AssemblyDescription("Arkanoid clon")]
+[assembly: AssemblyTitle("gArkanoid")]
+[assembly: AssemblyDescription("An 'Arkanoid' (NES) clon.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Juan Andres Garcia Alves de Borba")]
-[assembly: AssemblyProduct("Garkanoid")]
-[assembly: AssemblyCopyright("Copyright © 2009, Juan Andres Garcia")]
+[assembly: AssemblyProduct("gArkanoid")]
+[assembly: AssemblyCopyright("Copyright © 2009-2011, Juan Andres Garcia")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
