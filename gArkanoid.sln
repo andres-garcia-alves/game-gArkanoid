@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gArkanoid.MapEditor", "gArk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gArkanoid.Entities", "gArkanoid.Entities\gArkanoid.Entities.csproj", "{AE496590-6949-4011-A02A-3097C24BF89C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gArkanoid.Miscellaneous", "gArkanoid.MiscLibraries\gArkanoid.Miscellaneous.csproj", "{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gArkanoid.Miscellaneous", "gArkanoid.Miscellaneous\gArkanoid.Miscellaneous.csproj", "{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{4E6531A9-8872-4410-84DD-A7C1260EF2C7}"
 	ProjectSection(SolutionItems) = preProject

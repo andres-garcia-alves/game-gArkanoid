@@ -165,7 +165,7 @@
       <Project>{ae496590-6949-4011-a02a-3097c24bf89c}</Project>
       <Name>gArkanoid.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\gArkanoid.MiscLibraries\gArkanoid.Miscellaneous.csproj">
+    <ProjectReference Include="..\gArkanoid.Miscellaneous\gArkanoid.Miscellaneous.csproj">
       <Project>{4c30bb8a-13cc-4210-b7e7-52135b7f7efa}</Project>
       <Name>gArkanoid.Miscellaneous</Name>
     </ProjectReference>

@@ -74,7 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\gArkanoid.MiscLibraries\gArkanoid.Miscellaneous.csproj">
+    <ProjectReference Include="..\gArkanoid.Miscellaneous\gArkanoid.Miscellaneous.csproj">
       <Project>{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}</Project>
       <Name>gArkanoid.Miscellaneous</Name>
     </ProjectReference>
