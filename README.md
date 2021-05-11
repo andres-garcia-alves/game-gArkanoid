@@ -9,12 +9,12 @@ If you want, please send to me your feedback about this game: andres.garcia.alve
 
 ### Screenshots
 
-| Welcome Screen   | Map Editor       |
-|------------------|------------------|
-| ![](Resources/screenshot-welcome.png) | ![](Resources/screenshot-map-editor.png) |
+| Welcome Screen                           | Map Editor                               |
+|------------------------------------------|------------------------------------------|
+| ![](Resources/screenshot-welcome.png)    | ![](Resources/screenshot-map-editor.png) |
 
-| Game             |  Game            |
-|------------------|------------------|
-| ![](Resources/screenshot-game-01.png) | ![](Resources/screenshot-game-02.png) |
+| Game                                     |  Game                                    |
+|------------------------------------------|------------------------------------------|
+| ![](Resources/screenshot-game-01.png)    | ![](Resources/screenshot-game-02.png)    |
 
 Enjoy playing!
