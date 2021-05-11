@@ -24,6 +24,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{7C5A1B1A-2C99-465C-86E3-32FC25474350}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\screenshot-game-01.png = Resources\screenshot-game-01.png
+		Resources\screenshot-game-02.png = Resources\screenshot-game-02.png
+		Resources\screenshot-map-editor.png = Resources\screenshot-map-editor.png
+		Resources\screenshot-welcome.png = Resources\screenshot-welcome.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +60,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E6531A9-8872-4410-84DD-A7C1260EF2C7} = {4FC8F4C3-707F-4646-8BC6-6C5C6402EA82}
+		{7C5A1B1A-2C99-465C-86E3-32FC25474350} = {4FC8F4C3-707F-4646-8BC6-6C5C6402EA82}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {20EA50AB-9D58-4D55-A6C6-F24C4EFB52F3}
