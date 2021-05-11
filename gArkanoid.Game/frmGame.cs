@@ -1,41 +1,14 @@
-﻿/* 
- *  Created by:
- *      Juan Andrés Garcia Alves de Borba
- *  
- *  Date & Version:
- *      Feb-2010, version 1.1
- * 
- *  Contact:
- *      andres_garcia_ao@hotmail.com
- *      andres.garcia.ao@gmail.com
- *  
- *  Curse:
- *      Sistemas de Procesamiento de Datos
- *      Tecnicatura Superior en Programación
- *      Universidad Tecnológica Nacional (UTN) FRBA - Argentina
- *
- *  Licensing:
- *      This software is Open Source and are available under de GNU LGPL license.
- *      You can found a copy of the license at http://www.gnu.org/copyleft/lesser.html
- *  
- *  Enjoy playing!
-*/
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
+using System.Configuration;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows.Forms;
-using System.Configuration;
 
-using Garkanoid.Aux;
-using Garkanoid.Entities;
-using Garkanoid.Miscelaneous;
+using gArkanoid.Aux;
+using gArkanoid.Entities;
+using gArkanoid.Miscelaneous;
 
-namespace Garkanoid
+namespace gArkanoid
 {
     public partial class frmGame : Form
     {
@@ -45,21 +18,22 @@ namespace Garkanoid
 
         #endregion
 
-        bool bExit = false;
-        bool bKeyPressed = false;
-        eCurrentKey eKey = eCurrentKey.None;
-        cBalls.eInputType eInput = cBalls.eInputType.Keyboard;
-        Graphics oGraphics;
+        bool exit = false;
+        bool keyPressed = false;
+        eCurrentKey key = eCurrentKey.None;
 
-        cBalls oBalls;
-        cBoard oBoard;
-        cPlayerPad oPlayerPad;
-        cOutputLine oOutputLine;
-        cGameControl oGameControl;
-        cScoreBoard oScoreBoard;
-        cHighScores oHighScores;
-        cParticlesSystem oParticlesSystem;
-        cCollisionsSystem oCollisionsSystem;
+        readonly Graphics graphics;
+        readonly Balls.eInputType inputType = Balls.eInputType.Keyboard;
+
+        Board board;
+        readonly Balls balls;
+        readonly PlayerPad playerPad;
+        readonly OutputLine outputLine;
+        readonly GameControl gameControl;
+        readonly ScoreBoard scoreBoard;
+        readonly HighScores highScores;
+        readonly ParticlesSystem particlesSystem;
+        readonly CollisionsSystem collisionsSystem;
 
         public frmGame()
         {
@@ -68,45 +42,45 @@ namespace Garkanoid
             try
             {
                 // graphics quality
-                oGraphics = this.CreateGraphics();
-                oGraphics.SmoothingMode = SmoothingMode.HighQuality;
-                oGraphics.CompositingMode = CompositingMode.SourceCopy;
-                oGraphics.CompositingQuality = CompositingQuality.HighQuality;
+                this.graphics = this.CreateGraphics();
+                this.graphics.SmoothingMode = SmoothingMode.HighQuality;
+                this.graphics.CompositingMode = CompositingMode.SourceCopy;
+                this.graphics.CompositingQuality = CompositingQuality.HighQuality;
 
                 // background image
-                string sPath = ConfigurationManager.AppSettings["pathImages"];
-                this.BackgroundImage = Image.FromFile(@sPath + "GameBackground.png", false);
+                string path = ConfigurationManager.AppSettings["pathImages"];
+                this.BackgroundImage = Image.FromFile(path + "GameBackground.png", false);
 
-                // get the input type (keyboard / mouse) from settings
-                string sInput = ConfigurationManager.AppSettings["input"];
-                eInput = (sInput == "Mouse" ? cBalls.eInputType.Mouse : cBalls.eInputType.Keyboard);
+                // get the input method (keyboard/mouse) from settings
+                string input = ConfigurationManager.AppSettings["input"];
+                this.inputType = (input == "Mouse" ? Balls.eInputType.Mouse : Balls.eInputType.Keyboard);
 
-                if (eInput == cBalls.eInputType.Mouse)
-                    this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmGame_MouseMove);
+                if (inputType == Balls.eInputType.Mouse)
+                    this.MouseMove += new MouseEventHandler(this.frmGame_MouseMove);
 
                 // world objects
-                oBalls = new cBalls(eInput);
-                oBoard = new cBoard(1);
-                oPlayerPad = new cPlayerPad();
-                oOutputLine = new cOutputLine();
-                oGameControl = new cGameControl();
-                oScoreBoard = new cScoreBoard();
-                oHighScores = new cHighScores(); 
-                oParticlesSystem = new cParticlesSystem();
-                oCollisionsSystem = new cCollisionsSystem();
+                this.balls = new Balls(inputType);
+                this.board = new Board(1);
+                this.playerPad = new PlayerPad();
+                this.outputLine = new OutputLine();
+                this.gameControl = new GameControl();
+                this.scoreBoard = new ScoreBoard();
+                this.highScores = new HighScores();
+                this.particlesSystem = new ParticlesSystem();
+                this.collisionsSystem = new CollisionsSystem();
 
                 // add the listeners for objects comunication
-                oPlayerPad.DoubleBallRewardEvent += new cPlayerPad.DoubleBallEventHandler(oBalls.DoubleBallEvent);
-                oPlayerPad.TripleBallRewardEvent += new cPlayerPad.TripleBallEventHandler(oBalls.TripleBallEvent);
-                oPlayerPad.WinLevelRewardEvent += new cPlayerPad.WinLevelEventHandler(oGameControl.WinLevelEvent);
-                oPlayerPad.SlowBallRewardEvent += new cPlayerPad.SlowBallEventHandler(oBalls.SlowBallEvent);
-                oPlayerPad.DemolitionBallRewardEvent += new cPlayerPad.DemolitionBallEventHandler(oBalls.DemolitionBallEvent);
+                this.playerPad.DoubleBallRewardEvent += new PlayerPad.DoubleBallEventHandler(balls.DoubleBallEvent);
+                this.playerPad.TripleBallRewardEvent += new PlayerPad.TripleBallEventHandler(balls.TripleBallEvent);
+                this.playerPad.WinLevelRewardEvent += new PlayerPad.WinLevelEventHandler(gameControl.WinLevelEvent);
+                this.playerPad.SlowBallRewardEvent += new PlayerPad.SlowBallEventHandler(balls.SlowBallEvent);
+                this.playerPad.DemolitionBallRewardEvent += new PlayerPad.DemolitionBallEventHandler(balls.DemolitionBallEvent);
                 
                 // start
                 this.tmrStart.Enabled = true;
             }
-
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
@@ -115,126 +89,126 @@ namespace Garkanoid
         private void tmrStart_Tick(object sender, EventArgs e)
         {
             this.tmrStart.Enabled = false;
-            MainBucle();
+            this.MainBucle();
         }
 
         private void frmGame_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = true;
-            bKeyPressed = true;
+            this.keyPressed = true;
 
             if (e.KeyData == Keys.Left)
-                eKey = eCurrentKey.Left;
+                this.key = eCurrentKey.Left;
 
             else if (e.KeyData == Keys.Right)
-                eKey = eCurrentKey.Right;
+                this.key = eCurrentKey.Right;
 
             else if (e.KeyData == Keys.Space)
-                eKey = eCurrentKey.Space;
+                this.key = eCurrentKey.Space;
 
             else if (e.KeyData == Keys.Escape)
-                eKey = eCurrentKey.Esc;
+                this.key = eCurrentKey.Esc;
 
             else if (e.KeyData == Keys.F10)
-                eKey = eCurrentKey.F10;
+                this.key = eCurrentKey.F10;
         }
 
         private void frmGame_KeyUp(object sender, KeyEventArgs e)
         {
             e.Handled = true;
-            bKeyPressed = false;
+            this.keyPressed = false;
         }
 
         private void frmGame_MouseMove(object sender, MouseEventArgs e)
         {
-            oPlayerPad.SetPosition(e.Location.X - (oPlayerPad.GetWidth() / 2));
+            this.playerPad.SetPosition(e.Location.X - (playerPad.GetWidth() / 2));
         }
 
         private void frmGame_Paint(object sender, PaintEventArgs e)
         {
             // redraw the game world
-            oScoreBoard.Draw(e.Graphics, oGameControl.Lives, oGameControl.Level, oGameControl.Score);
-            oBoard.Draw(e.Graphics);
-            oBalls.Draw(e.Graphics);
-            oPlayerPad.Draw(e.Graphics);
-            oOutputLine.Draw(e.Graphics);
-            oParticlesSystem.Draw(e.Graphics);
-            oGameControl.DrawFPS(e.Graphics);
+            this.scoreBoard.Draw(e.Graphics, this.gameControl.Lives, this.gameControl.Level, this.gameControl.Score);
+            this.board.Draw(e.Graphics);
+            this.balls.Draw(e.Graphics);
+            this.playerPad.Draw(e.Graphics);
+            this.outputLine.Draw(e.Graphics);
+            this.particlesSystem.Draw(e.Graphics);
+            this.gameControl.DrawFPS(e.Graphics);
         }
 
         private void MainBucle()
         {
-            while (!bExit)
+            while (!exit)
             {
                 Application.DoEvents();
-                oGameControl.FrameStart();
+                this.gameControl.FrameStart();
 
                 // input
-                ProcessInput();
+                this.ProcessInput();
 
                 // collision check
-                oCollisionsSystem.CheckCollisions();
+                this.collisionsSystem.CheckCollisions();
 
                 // game update
-                if (oGameControl.CheckLoseLive()) {
-                    oBalls.Reset();
-                    oPlayerPad.Reset();
-                    oParticlesSystem.ResetEfects();
-                    cBoard.ResetRewards();
-                    cBoard.ResetShots();
+                if (this.gameControl.CheckLoseLive()) {
+                    this.balls.Reset();
+                    this.playerPad.Reset();
+                    this.particlesSystem.ResetEfects();
+                    Board.ResetRewards();
+                    Board.ResetShots();
                 }
 
-                if (oGameControl.CheckNoLivesRemaining()) {
-                    oHighScores.CheckNewHighScore(oGameControl.Score);
-                    bExit = true; this.Close();
+                if (this.gameControl.CheckNoLivesRemaining()) {
+                    this.highScores.CheckNewHighScore(this.gameControl.Score);
+                    exit = true; this.Close();
                 }
 
-                if (oGameControl.CheckLevelComplete(oBoard)) {
-                    oBalls.Reset();
-                    oPlayerPad.Reset();
-                    oParticlesSystem.ResetEfects();
-                    cBoard.ResetRewards();
-                    cBoard.ResetShots();
+                if (this.gameControl.CheckLevelComplete(board)) {
+                    this.balls.Reset();
+                    this.playerPad.Reset();
+                    this.particlesSystem.ResetEfects();
+                    Board.ResetRewards();
+                    Board.ResetShots();
 
-                    oBoard = new cBoard(oGameControl.Level);
+                    this.board = new Board(this.gameControl.Level);
                 }
 
-                if (oGameControl.CheckAllLevelsFinished()) {
-                    oHighScores.CheckNewHighScore(oGameControl.Score);
-                    bExit = true; this.Close();
+                if (this.gameControl.CheckAllLevelsFinished()) {
+                    this.highScores.CheckNewHighScore(this.gameControl.Score);
+                    exit = true; this.Close();
                 }
 
                 // next move
-                oBalls.Move();
+                this.balls.Move();
 
                 // repaint the screen
                 this.Refresh();
 
-                oGameControl.CalculateFPS();
-                oGameControl.FrameFinish();
+                this.gameControl.CalculateFPS();
+                this.gameControl.FrameFinish();
             }
         }
 
         private void ProcessInput()
         {
-            if (bKeyPressed == true)
+            if (keyPressed == true)
             {
-                if (eKey == eCurrentKey.Left && eInput == cBalls.eInputType.Keyboard) {
-                    oPlayerPad.MoveLeft(null);
-                    this.Invalidate(oPlayerPad.GetPositionRectangle());
+                if (key == eCurrentKey.Left && inputType == Balls.eInputType.Keyboard) {
+                    this.playerPad.MoveLeft(null);
+                    this.Invalidate(this.playerPad.GetPositionRectangle());
 
-                } else if (eKey == eCurrentKey.Right && eInput == cBalls.eInputType.Keyboard) {
-                    oPlayerPad.MoveRight(null);
-                    this.Invalidate(oPlayerPad.GetPositionRectangle());
+                } else if (key == eCurrentKey.Right && inputType == Balls.eInputType.Keyboard) {
+                    this.playerPad.MoveRight(null);
+                    this.Invalidate(this.playerPad.GetPositionRectangle());
                 
-                } else if (eKey == eCurrentKey.Space) {
-                    oPlayerPad.Fire();
+                } else if (key == eCurrentKey.Space) {
+                    this.playerPad.Fire();
 
-                } else if (eKey == eCurrentKey.F10) {
-                    oGameControl.ShowHideFPS();
+                } else if (key == eCurrentKey.F10) {
+                    this.gameControl.ShowHideFPS();
                 
-                } else if (eKey == eCurrentKey.Esc) {
-                    bExit = true;
+                } else if (key == eCurrentKey.Esc) {
+                    exit = true;
                     this.Close();
                 }
             }

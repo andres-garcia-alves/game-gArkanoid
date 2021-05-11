@@ -1,30 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
 using System.Configuration;
+using System.IO;
+using System.Windows.Forms;
 
-using Garkanoid.Miscelaneous;
+using gArkanoid.Miscelaneous;
 
-namespace Garkanoid
+namespace gArkanoid
 {
     public partial class frmOptions : Form
     {
         public frmOptions()
         {
             InitializeComponent();
-            LoadLanguajeTexts();
-            LoadFormData();
+            this.LoadLanguajeTexts();
+            this.LoadFormData();
 
             // add the events handlers at this point, to avoid handle previously events
-            this.cboLanguajes.SelectedIndexChanged += new System.EventHandler(this.DisplayRestartMessage);
-            this.cboLives.SelectedIndexChanged += new System.EventHandler(this.DisplayRestartMessage);
-            this.chkMusic.CheckedChanged += new System.EventHandler(this.DisplayRestartMessage);
-            this.radKeyboard.CheckedChanged += new System.EventHandler(this.DisplayRestartMessage);
+            this.cboLanguajes.SelectedIndexChanged += new EventHandler(this.DisplayRestartMessage);
+            this.cboLives.SelectedIndexChanged += new EventHandler(this.DisplayRestartMessage);
+            this.chkMusic.CheckedChanged += new EventHandler(this.DisplayRestartMessage);
+            this.radKeyboard.CheckedChanged += new EventHandler(this.DisplayRestartMessage);
         }
 
         private void frmOptions_KeyDown(object sender, KeyEventArgs e)
@@ -35,7 +30,7 @@ namespace Garkanoid
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            SaveFormData();
+            this.SaveFormData();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -57,14 +52,14 @@ namespace Garkanoid
         {
             try
             {
-                this.lblLanguaje.Text = cLanguaje.GetFrmOptionsLblLanguaje();
-                this.lblLives.Text = cLanguaje.GetFrmOptionsLblLives();
-                this.lblMusic.Text = cLanguaje.GetFrmOptionsLblMusic();
-                this.lblInput.Text = cLanguaje.GetFrmOptionsLblInput();
-                this.lblMessaje.Text = cLanguaje.GetFrmOptionsLblMenssaje();
-                this.btnOK.Text = cLanguaje.GetFrmOptionsBtnOK();
-                this.btnCancel.Text = cLanguaje.GetFrmOptionsBtnCancel();
-                this.btnRestart.Text = cLanguaje.GetFrmOptionsBtnRestart();
+                this.lblLanguaje.Text = Languaje.GetFrmOptionsLblLanguaje();
+                this.lblLives.Text = Languaje.GetFrmOptionsLblLives();
+                this.lblMusic.Text = Languaje.GetFrmOptionsLblMusic();
+                this.lblInput.Text = Languaje.GetFrmOptionsLblInput();
+                this.lblMessaje.Text = Languaje.GetFrmOptionsLblMenssaje();
+                this.btnOK.Text = Languaje.GetFrmOptionsBtnOK();
+                this.btnCancel.Text = Languaje.GetFrmOptionsBtnCancel();
+                this.btnRestart.Text = Languaje.GetFrmOptionsBtnRestart();
             }
             catch (Exception ex)
             {
@@ -76,21 +71,21 @@ namespace Garkanoid
         {
             try
             {
-                string sPath = ConfigurationManager.AppSettings["pathLanguajes"];
+                string path = ConfigurationManager.AppSettings["pathLanguajes"];
 
-                DirectoryInfo oDirectoryInfo = new DirectoryInfo(@sPath);
-                FileInfo[] arrFileInfo = oDirectoryInfo.GetFiles("*.xml", SearchOption.TopDirectoryOnly);
+                DirectoryInfo directoryInfo = new DirectoryInfo(path);
+                FileInfo[] filesInfo = directoryInfo.GetFiles("*.xml", SearchOption.TopDirectoryOnly);
 
-                foreach (FileInfo o in arrFileInfo)
-                    this.cboLanguajes.Items.Add(o.Name.Replace(o.Extension, ""));
+                foreach (FileInfo fileInfo in filesInfo)
+                    this.cboLanguajes.Items.Add(fileInfo.Name.Replace(fileInfo.Extension, ""));
                 this.cboLanguajes.SelectedItem = ConfigurationManager.AppSettings["languaje"];
                 this.cboLives.SelectedItem = ConfigurationManager.AppSettings["lives"];
 
-                string sMusic = ConfigurationManager.AppSettings["music"];
-                if (sMusic == "ON") this.chkMusic.Checked = true;
+                string music = ConfigurationManager.AppSettings["music"];
+                if (music == "ON") this.chkMusic.Checked = true;
 
-                string sInput = ConfigurationManager.AppSettings["input"];
-                if (sInput == "Mouse") this.radMouse.Checked = true;
+                string input = ConfigurationManager.AppSettings["input"];
+                if (input == "Mouse") this.radMouse.Checked = true;
                 else this.radKeyboard.Checked = true;
             }
             catch (Exception ex) { throw ex; }
@@ -102,10 +97,12 @@ namespace Garkanoid
             {
                 this.btnOK.Enabled = false;
 
-                ExeConfigurationFileMap oFileMap = new ExeConfigurationFileMap();
-                oFileMap.ExeConfigFilename = "Garkanoid.exe.config";
+                ExeConfigurationFileMap fileMap = new ExeConfigurationFileMap
+                {
+                    ExeConfigFilename = "Garkanoid.exe.config"
+                };
 
-                Configuration config = ConfigurationManager.OpenMappedExeConfiguration(oFileMap, ConfigurationUserLevel.None);
+                Configuration config = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
 
                 config.AppSettings.Settings.Remove("languaje");
                 config.AppSettings.Settings.Add("languaje", this.cboLanguajes.SelectedItem.ToString());

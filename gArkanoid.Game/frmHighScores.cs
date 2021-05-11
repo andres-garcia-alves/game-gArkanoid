@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using System.Configuration;
 
-using Garkanoid.Miscelaneous;
+using gArkanoid.Miscelaneous;
 
-namespace Garkanoid
+namespace gArkanoid
 {
     public partial class frmHighScores : Form
     {
         public frmHighScores()
         {
             InitializeComponent();
-            LoadFormData();
+            this.LoadFormData();
         }
 
         private void frmHighScores_KeyDown(object sender, KeyEventArgs e)
@@ -33,15 +27,15 @@ namespace Garkanoid
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            string sTitle = cLanguaje.GetFrmHighScoresHighScores()[0];
-            string sMsg = cLanguaje.GetFrmHighScoresHighScores()[1];
-            DialogResult oDialogResult = MessageBox.Show(sMsg, sTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            string title = Languaje.GetFrmHighScoresHighScores()[0];
+            string message = Languaje.GetFrmHighScoresHighScores()[1];
+            DialogResult dialogResult = MessageBox.Show(message, title, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            if (oDialogResult == DialogResult.OK)
+            if (dialogResult == DialogResult.OK)
             {
-                cHighScores oHighScores = new cHighScores();
-                oHighScores.ResetHightScores();
-                LoadFormData();
+                HighScores highScores = new HighScores();
+                highScores.ResetHightScores();
+                this.LoadFormData();
             }
         }
 
@@ -49,17 +43,16 @@ namespace Garkanoid
         {
             this.lblPlayers.Text = "";
             this.lblPoints.Text = "";
-            List<cHighScores.cHighScoreItem> lstHighScores;
 
             try
             {
-                cHighScores oHighScores = new cHighScores();
-                lstHighScores = oHighScores.GetHighScores();
+                HighScores highScores = new HighScores();
+                List<HighScores.HighScoreItem> highScoresItems = highScores.GetHighScores();
 
-                for (int i = 0; i < lstHighScores.Count; i++)
+                for (int i = 0; i < highScoresItems.Count; i++)
                 {
-                    this.lblPlayers.Text += lstHighScores[i].Name + "\n";
-                    this.lblPoints.Text += lstHighScores[i].Points.ToString().PadLeft(5, '0') + "\n";
+                    this.lblPlayers.Text += highScoresItems[i].Name + "\n";
+                    this.lblPoints.Text += highScoresItems[i].Points.ToString().PadLeft(5, '0') + "\n";
                 }
             }
             catch (Exception ex) { throw ex; }

@@ -1,28 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
-using Garkanoid.Miscelaneous;
+using gArkanoid.Miscelaneous;
 
-namespace Garkanoid
+namespace gArkanoid
 {
     public partial class frmCredits : Form
     {
-        int iTick = 0;
-        int iEfectStep = 0;
+        int tick = 0;
+        int efectStep = 0;
 
-        string[] sTitles = cLanguaje.GetFrmCreditsTitles();
-        string[] sValues = { "Juan Andres Garcia Alves de Borba",
-                             "andres_garcia_ao@hotmail.com",
-                             "Sistema de Procesamiento de Datos",
-                             "Universidad Tecnológica Nacional (UTN) - FRBA - Argentina",
-                             "Available under GNU LGPL license (Open Source)",
-                             "Enjoy playing!",
-                             "Press 'Esc' to go back." };
+        readonly string[] titles = Languaje.GetFrmCreditsTitles();
+        readonly string[] values = { "Andres Garcia Alves",
+                                     "andres.garcia.alves@gmail.com",
+                                     "Sistema de Procesamiento de Datos",
+                                     "Universidad Tecnológica Nacional (UTN) - FRBA - Argentina",
+                                     "Available under GNU GPL v3.0 (Open Source)",
+                                     "Enjoy playing!",
+                                     "Press 'Esc' to go back." };
         
         public frmCredits()
         {
@@ -37,43 +33,43 @@ namespace Garkanoid
 
         private void tmrChangeItem_Tick(object sender, EventArgs e)
         {
-            iTick++;
+            tick++;
 
-            switch (iTick)
+            switch (tick)
             {
                 case 1:
-                    this.lblTitle.Text = sTitles[0];
-                    this.lblValue.Text = sValues[0];
+                    this.lblTitle.Text = titles[0];
+                    this.lblValue.Text = values[0];
                     StartEfect();
                     break;
                 case 7:
-                    this.lblTitle.Text = sTitles[1];
-                    this.lblValue.Text = sValues[1];
+                    this.lblTitle.Text = titles[1];
+                    this.lblValue.Text = values[1];
                     StartEfect();
                     break;
                 case 13:
-                    this.lblTitle.Text = sTitles[2];
-                    this.lblValue.Text = sValues[2];
+                    this.lblTitle.Text = titles[2];
+                    this.lblValue.Text = values[2];
                     StartEfect();
                     break;
                 case 19:
-                    this.lblTitle.Text = sTitles[3];
-                    this.lblValue.Text = sValues[3];
+                    this.lblTitle.Text = titles[3];
+                    this.lblValue.Text = values[3];
                     StartEfect();
                     break;
                 case 25:
-                    this.lblTitle.Text = sTitles[4];
-                    this.lblValue.Text = sValues[4];
+                    this.lblTitle.Text = titles[4];
+                    this.lblValue.Text = values[4];
                     StartEfect();
                     break;
                 case 31:
-                    this.lblTitle.Text = sTitles[5];
-                    this.lblValue.Text = sValues[5];
+                    this.lblTitle.Text = titles[5];
+                    this.lblValue.Text = values[5];
                     StartEfect();
                     break;
                 case 37:
-                    this.lblTitle.Text = sTitles[6];
-                    this.lblValue.Text = sValues[6];
+                    this.lblTitle.Text = titles[6];
+                    this.lblValue.Text = values[6];
                     this.lblTop.Visible = false;
                     tmrChangeItem.Enabled = false;
                     break;
@@ -82,10 +78,10 @@ namespace Garkanoid
 
         private void tmrEfect_Tick(object sender, EventArgs e)
         {
-            iEfectStep++;
+            this.efectStep++;
 
-            if (iEfectStep < 50) {
-                int iPosX = (iEfectStep * 568 / 50) + 32;
+            if (this.efectStep < 50) {
+                int iPosX = (this.efectStep * 568 / 50) + 32;
                 this.lblTop.Location = new Point(iPosX, 184);
 
             } else {
@@ -98,7 +94,7 @@ namespace Garkanoid
 
         private void StartEfect()
         {
-            iEfectStep = 0;
+            this.efectStep = 0;
             this.tmrEfect.Enabled = true;
         }
     }

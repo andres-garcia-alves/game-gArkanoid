@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("gArkanoid")]
 [assembly: AssemblyDescription("An 'Arkanoid' (NES) clon.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Juan Andres Garcia Alves de Borba")]
+[assembly: AssemblyCompany("Andres Garcia Alves")]
 [assembly: AssemblyProduct("gArkanoid")]
-[assembly: AssemblyCopyright("Copyright © 2009-2011, Juan Andres Garcia")]
+[assembly: AssemblyCopyright("Copyright © 2009-2021, Juan Andres Garcia")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.2.0.0")]
+[assembly: AssemblyFileVersion("1.2.0.0")]

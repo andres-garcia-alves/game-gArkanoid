@@ -1,4 +1,4 @@
-﻿namespace Garkanoid
+﻿namespace gArkanoid
 {
     partial class frmHowTo
     {

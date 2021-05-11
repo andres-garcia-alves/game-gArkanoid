@@ -8,17 +8,32 @@
     <ProjectGuid>{2B8643B1-BB73-46BD-9B13-6F29430F99EF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Garkanoid</RootNamespace>
-    <AssemblyName>Garkanoid</AssemblyName>
+    <RootNamespace>gArkanoid.Game</RootNamespace>
+    <AssemblyName>gArkanoid</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <StartupObject>Garkanoid.Program</StartupObject>
+    <StartupObject>gArkanoid.Program</StartupObject>
     <ApplicationIcon>Icons\main.ico</ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -128,6 +143,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -143,14 +161,21 @@
     <Content Include="Icons\main.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{AE496590-6949-4011-A02A-3097C24BF89C}</Project>
-      <Name>Entities</Name>
+    <ProjectReference Include="..\gArkanoid.Entities\gArkanoid.Entities.csproj">
+      <Project>{ae496590-6949-4011-a02a-3097c24bf89c}</Project>
+      <Name>gArkanoid.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MiscLibraries\MiscLibraries.csproj">
-      <Project>{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}</Project>
-      <Name>MiscLibraries</Name>
+    <ProjectReference Include="..\gArkanoid.MiscLibraries\gArkanoid.Miscellaneous.csproj">
+      <Project>{4c30bb8a-13cc-4210-b7e7-52135b7f7efa}</Project>
+      <Name>gArkanoid.Miscellaneous</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

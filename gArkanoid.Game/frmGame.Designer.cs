@@ -1,4 +1,4 @@
-﻿namespace Garkanoid
+﻿namespace gArkanoid
 {
     partial class frmGame
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGame));
             this.tmrStart = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -45,6 +46,7 @@
             this.ClientSize = new System.Drawing.Size(640, 480);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmGame";
@@ -53,8 +55,8 @@
             this.Text = "Game";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmGame_Paint);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmGame_KeyUp);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmGame_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmGame_KeyUp);
             this.ResumeLayout(false);
 
         }
