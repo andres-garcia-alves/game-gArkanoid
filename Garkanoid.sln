@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garkanoid", "Garkanoid\Garkanoid.csproj", "{2B8643B1-BB73-46BD-9B13-6F29430F99EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapEditor", "MapEditor\MapEditor.csproj", "{F2D89D8A-756D-49CB-85D5-5DA1EEC8B589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{AE496590-6949-4011-A02A-3097C24BF89C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiscLibraries", "MiscLibraries\MiscLibraries.csproj", "{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{4E6531A9-8872-4410-84DD-A7C1260EF2C7}"
+	ProjectSection(SolutionItems) = preProject
+		Releases\gArkanoid v1.1.zip = Releases\gArkanoid v1.1.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4FC8F4C3-707F-4646-8BC6-6C5C6402EA82}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Readme.txt = Readme.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B8643B1-BB73-46BD-9B13-6F29430F99EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B8643B1-BB73-46BD-9B13-6F29430F99EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B8643B1-BB73-46BD-9B13-6F29430F99EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B8643B1-BB73-46BD-9B13-6F29430F99EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D89D8A-756D-49CB-85D5-5DA1EEC8B589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D89D8A-756D-49CB-85D5-5DA1EEC8B589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D89D8A-756D-49CB-85D5-5DA1EEC8B589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D89D8A-756D-49CB-85D5-5DA1EEC8B589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE496590-6949-4011-A02A-3097C24BF89C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE496590-6949-4011-A02A-3097C24BF89C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE496590-6949-4011-A02A-3097C24BF89C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE496590-6949-4011-A02A-3097C24BF89C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C30BB8A-13CC-4210-B7E7-52135B7F7EFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E6531A9-8872-4410-84DD-A7C1260EF2C7} = {4FC8F4C3-707F-4646-8BC6-6C5C6402EA82}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20EA50AB-9D58-4D55-A6C6-F24C4EFB52F3}
+	EndGlobalSection
+EndGlobal

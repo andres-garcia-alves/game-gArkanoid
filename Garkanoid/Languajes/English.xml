@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<languaje>
+  <frmCredits>
+    <titles>Created by#Contact#Curse#University#Licensing##</titles>
+  </frmCredits>
+  <frmGame>
+    <level>Level</level>
+    <score>Score   </score>
+    <loseLive>Upsss# lives remaining.</loseLive>
+    <noLive>Upsss#No lives remaining, you lose.</noLive>
+    <levelUp>Good#Level complete!\nPrepare for level </levelUp>
+    <gameFinished>Congratz#Game Finished!</gameFinished>
+    <highScore>New high score!#Type your name (# chars max).</highScore>
+  </frmGame>
+  <frmHighScores>
+    <reset>CONFIRMATION#Really you want to reset the high scores?</reset>
+  </frmHighScores>
+  <frmHowTo>
+    <step1>When the ball hits a brick, that will be destroyed.</step1>
+    <step2>Destroy all brick to win the level.</step2>
+    <step3>Avoid that the ball fall out from the screen.</step3>
+    <step4>Normal collision direction.</step4>
+    <step5>Use the pad borders to change normal collision direction.</step5>
+    <lblLeyend>End of tutorial.</lblLeyend>
+    <btnBack>Return</btnBack>
+    <btnRepeat>Repeat</btnRepeat>
+  </frmHowTo>
+  <frmMenu>
+    <btnPlay>Play</btnPlay>
+    <btnHowTo>How To Play</btnHowTo>
+    <btnHighScores>High Scores</btnHighScores>
+    <btnOptions>Options</btnOptions>
+    <btnEditor>Level Editor</btnEditor>
+    <btnCredits>Credits</btnCredits>
+    <btnExit>Exit</btnExit>
+  </frmMenu>
+  <frmOptions>
+    <lblLanguaje>Languaje</lblLanguaje>
+    <lblLives>Lives</lblLives>
+    <lblMusic>Music</lblMusic>
+    <lblInput>Input</lblInput>
+    <lblMessaje>Changes will apply after game restart.</lblMessaje>
+    <btnOK>Save</btnOK>
+    <btnCancel>Return</btnCancel>
+    <btnRestart>Restart</btnRestart>
+  </frmOptions>
+</languaje>
