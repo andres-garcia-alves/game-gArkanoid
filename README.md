@@ -16,7 +16,7 @@ An 'Arkanoid' (NES) clon, developed in C# & GDI+.
 
 &nbsp;
 
-Developed in 2010.02 for subject 'Sistemas de Procesamiento de Datos', Universidad Tecnológica Nacional (UTN), Buenos Aires, Argentina. 
+Developed in 2010.02 for subject 'Sistemas de Procesamiento de Datos', at Universidad Tecnológica Nacional (UTN), Buenos Aires, Argentina. 
 
 This is the first public release of this project.  
 Please send to me your feedback about this game: andres.garcia.alves@gmail.com
