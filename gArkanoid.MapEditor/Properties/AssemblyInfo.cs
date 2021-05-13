@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MapEditor")]
 [assembly: AssemblyDescription("gArkanoid MapEditor")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Andres Garcia Alves")]
 [assembly: AssemblyProduct("gArkanoid MapEditor")]
 [assembly: AssemblyCopyright("Copyright © 2009-2021, Andres Garcia Alves")]
 [assembly: AssemblyTrademark("")]
