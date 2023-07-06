@@ -1,6 +1,6 @@
 # gArkanoid v1.1
 
-An 'Arkanoid' (NES) clon, developed in C# & GDI+
+An 'Arkanoid' (NES) game clon, developed in C# & GDI+
 
 &nbsp;
 
